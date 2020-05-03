@@ -14,7 +14,6 @@ function startGame() {
   theNumber = Math.floor(Math.random() * maxNumber);
   minguess = 0;
   maxguess = maxNumber;
-  console.log(theNumber);
   start = true;
   guessNumber = 0;
   document.querySelector('.guess-number').value = "";
