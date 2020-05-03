@@ -12,7 +12,7 @@ function startGame() {
   document.querySelector('.guess-between').classList.remove('hide');
   document.querySelector('.guess-between').innerHTML = 'Gondoltam egy számra 0 és ' + maxNumber + ' között.';
   theNumber = Math.floor(Math.random() * maxNumber);
-  minguess = 0;
+  minguess = -1;
   maxguess = maxNumber;
   start = true;
   guessNumber = 0;
@@ -67,7 +67,7 @@ function guessIt(number) {
     }
     const between = document.querySelector('.between');
     between.innerHTML = "";
-    if (minguess > 0) {
+    if (minguess > -1) {
       between.innerHTML += minguess + " < ";
     }
     between.innerHTML += "X";
