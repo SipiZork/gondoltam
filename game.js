@@ -5,34 +5,43 @@ let start = false;
 let maxNumber = 100;
 let guessNumber = 0;
 
+const startButtonDiv = document.querySelector('.start-button');
+const betweenDiv = document.querySelector('.between');
+const modeDiv = document.querySelector('.mode');
+const guessBetweenDiv = document.querySelector('.guess-between');
+const guessNumberDiv = document.querySelector('.guess-number');
+const restartDiv = document.querySelector('.restart');
+const modeOptionsDiv = document.querySelectorAll(".mode-option");
+const guessButtonDiv = document.querySelector('.guess-button');
+
 function startGame() {
-  document.querySelector('.start-button').classList.add('hide');
-  document.querySelector('.between').classList.remove('hide');
-  document.querySelector('.mode').classList.add('hide');
-  document.querySelector('.guess-between').classList.remove('hide');
-  document.querySelector('.guess-between').innerHTML = 'Gondoltam egy számra 0 és ' + maxNumber + ' között.';
+  startButtonDiv.classList.add('hide');
+  betweenDiv.classList.remove('hide');
+  modeDiv.classList.add('hide');
+  guessBetweenDiv.classList.remove('hide');
+  guessBetweenDiv.innerHTML = 'Gondoltam egy számra 0 és ' + maxNumber + ' között.';
+  guessNumberDiv.value = "";
+  guessNumberDiv.focus();
+  betweenDiv.innerHTML = " X ";
   theNumber = Math.floor(Math.random() * maxNumber);
   minguess = -1;
   maxguess = maxNumber;
   start = true;
   guessNumber = 0;
-  document.querySelector('.guess-number').value = "";
-  document.querySelector('.guess-number').focus();
-  document.querySelector('.between').innerHTML = " X ";
 }
 
 function restartGame() {
-  document.querySelector('.start-button').classList.remove('hide');
-  document.querySelector('.mode').classList.remove('hide');
-  document.querySelector('.between').classList.add('hide');
-  document.querySelector('.mode').classList.remove('hide');
-  document.querySelector('.guess-between').classList.add('hide');
-  document.querySelector('.restart').classList.add('hide');
-  document.querySelector('.guess-number').value = "";
+  startButtonDiv.classList.remove('hide');
+  modeDiv.classList.remove('hide');
+  betweenDiv.classList.add('hide');
+  modeDiv.classList.remove('hide');
+  guessBetweenDiv.classList.add('hide');
+  restartDiv.classList.add('hide');
+  guessNumberDiv.value = "";
 }
 
 function removeSelectClass(className) {
-  options.forEach(option => {
+  modeOptionsDiv.forEach(option => {
     if (option.getAttribute("name") !== className) {
       option.classList.remove("select");
     }
@@ -54,39 +63,36 @@ function switchGameMode(gameModeName) {
 
 function guessIt(number) {
   if (Number.isInteger(number)) {
-    document.querySelector('.guess-number').value = "";
+    guessNumberDiv.value = "";
     guessNumber++;
     if (number < theNumber && number > minguess) {
       minguess = number;
     } else if (number > theNumber && number < maxguess) {
       maxguess = number;
     } else if (number == theNumber) {
-      document.querySelector('.guess-between').innerHTML = theNumber + " TALÁLT! " + guessNumber + " tippre volt szükséged.";
-      document.querySelector('.between').classList.add('hide');
-      document.querySelector('.restart').classList.remove('hide');
+      guessBetweenDiv.innerHTML = theNumber + " TALÁLT! " + guessNumber + " tippre volt szükséged.";
+      betweenDiv.classList.add('hide');
+      restartDiv.classList.remove('hide');
       start = false;
     }
-    const between = document.querySelector('.between');
-    between.innerHTML = "";
+    betweenDiv.innerHTML = "";
     if (minguess > -1) {
-      between.innerHTML += minguess + " < ";
+      betweenDiv.innerHTML += minguess + " < ";
     }
-    between.innerHTML += "X";
+    betweenDiv.innerHTML += "X";
     if (maxguess < maxNumber) {
-      between.innerHTML += " < " + maxguess
+      betweenDiv.innerHTML += " < " + maxguess
     }
   } else {
-    document.querySelector('.guess-number').value = "";
+    guessNumberDiv.value = "";
   }
 }
 
-document.querySelector(".start-button").addEventListener("click", function () {
+startButtonDiv.addEventListener("click", function () {
   startGame();
 });
 
-const options = document.querySelectorAll(".mode-option");
-
-options.forEach(option => {
+modeOptionsDiv.forEach(option => {
   option.addEventListener("click", function () {
     let gameModeName = option.getAttribute("name");
     switchGameMode(gameModeName);
@@ -95,22 +101,22 @@ options.forEach(option => {
   });
 });
 
-document.querySelector('.guess-button').addEventListener("click", function () {
+guessButtonDiv.addEventListener("click", function () {
   const number = parseInt(document.querySelector('.guess-number').value);
   if (start) {
     guessIt(number);
   }
 });
 
-document.querySelector('.guess-number').addEventListener("keyup", function (event) {
+guessNumberDiv.addEventListener("keyup", function (event) {
   if (event.keyCode == 13) {
     if (start) {
-      const number = parseInt(document.querySelector('.guess-number').value);
+      const number = parseInt(guessNumberDiv.value);
       guessIt(number);
     }
   }
 });
 
-document.querySelector('.restart').addEventListener('click', function () {
+restartDiv.addEventListener('click', function () {
   restartGame();
 })
