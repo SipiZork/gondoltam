@@ -1,3 +1,9 @@
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -5,17 +11,13 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   min-height: 100vh;
   background: rgba(120,120,120,1);
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   flex-direction: column;
   width: 30%;
   min-width: 400px;
@@ -25,10 +27,8 @@ body {
   border-radius: 10px;
 
   .guess-between {
-    display: flex;
+    @include flex(center, center);
     width: 90%;
-    justify-content: center;
-    align-items: center;
     height: 50px;
     background: rgba(190,190,190,1);
     border-radius: 10px;
@@ -40,10 +40,8 @@ body {
   }
 
   .mode {
-    display: flex;
+    @include flex(space-around, center);
     width: 90%;
-    justify-content: space-around;
-    align-items: center;
     height: 50px;
     background: rgba(190,190,190,1);
     border-radius: 10px;
@@ -54,11 +52,9 @@ body {
     }
 
     .mode-option {
+      @include flex(center, center);
       min-width: 100px;
-      justify-content: center;
       height: 80%;
-      display: flex;
-      align-items: center;
       cursor: pointer;
       color: rgba(0,0,0,1);
       text-transform: uppercase;
@@ -131,10 +127,8 @@ body {
   }
 
   .game-div {
-    display: flex;
+    @include flex(space-around, center);
     width: 90%;
-    justify-content: space-around;
-    align-items: center;
     height: 50px;
     background: rgba(190,190,190,1);
     border-radius: 10px;
@@ -149,9 +143,7 @@ body {
     }
 
     .restart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex(center, center);
       height: 50px;
 
       &.hide {
@@ -174,16 +166,14 @@ body {
 
       &:hover {
         background: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
       }
     }
   }
 
   .game-form {
-    display: flex;
+    @include flex(center, center);
     width: 90%;
-    justify-content: center;
-    align-items: center;
     height: 50px;
     background: rgba(190,190,190,1);
     border-radius: 10px;
