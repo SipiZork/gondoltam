@@ -17,6 +17,7 @@ function startGame() {
   start = true;
   guessNumber = 0;
   document.querySelector('.guess-number').value = "";
+  document.querySelector('.guess-number').focus();
   document.querySelector('.between').innerHTML = " X ";
 }
 
