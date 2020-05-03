@@ -18,6 +18,7 @@ function startGame() {
   start = true;
   guessNumber = 0;
   document.querySelector('.guess-number').value = "";
+  document.querySelector('.between').innerHTML = " X ";
 }
 
 function restartGame() {
@@ -52,31 +53,30 @@ function switchGameMode(gameModeName) {
 }
 
 function guessIt(number) {
-  document.querySelector('.guess-number').value = "";
-  guessNumber++;
-  if (number < theNumber && number > minguess) {
-    minguess = number;
-  } else if (number > theNumber && number < maxguess) {
-    maxguess = number;
-  } else if (number == theNumber) {
-    document.querySelector('.guess-between').innerHTML = theNumber + " TALÁLT! " + guessNumber + " tippre volt szükséged.";
-    document.querySelector('.between').classList.add('hide');
-    document.querySelector('.restart').classList.remove('hide');
-    start = false;
-  }
-  const between = document.querySelector('.between');
-  console.log(maxguess);
-  between.innerHTML = "";
-  if (minguess > 0) {
-    between.innerHTML += minguess + " < ";
-  }
-  if (number == theNumber) {
-    between.innerHTML += theNumber;
-  } else {
+  if (Number.isInteger(number)) {
+    document.querySelector('.guess-number').value = "";
+    guessNumber++;
+    if (number < theNumber && number > minguess) {
+      minguess = number;
+    } else if (number > theNumber && number < maxguess) {
+      maxguess = number;
+    } else if (number == theNumber) {
+      document.querySelector('.guess-between').innerHTML = theNumber + " TALÁLT! " + guessNumber + " tippre volt szükséged.";
+      document.querySelector('.between').classList.add('hide');
+      document.querySelector('.restart').classList.remove('hide');
+      start = false;
+    }
+    const between = document.querySelector('.between');
+    between.innerHTML = "";
+    if (minguess > 0) {
+      between.innerHTML += minguess + " < ";
+    }
     between.innerHTML += "X";
-  }
-  if (maxguess < maxNumber) {
-    between.innerHTML += " < " + maxguess
+    if (maxguess < maxNumber) {
+      between.innerHTML += " < " + maxguess
+    }
+  } else {
+    document.querySelector('.guess-number').value = "";
   }
 }
 
