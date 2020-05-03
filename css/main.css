@@ -33,7 +33,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 60%;
+  width: 30%;
   min-width: 400px;
   min-height: 300px;
   background: #969696;
