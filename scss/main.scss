@@ -101,27 +101,30 @@ body {
       &[name="easy"] {
         background-color: rgba(14, 130, 4, 1);
 
-        &:hover {
+        &.select, &:hover {
           background-color: rgba(20, 191, 6, 1);
           color: rgba(255,255,255,1);
+          border: 1px solid #fff;
         }
       }
 
       &[name="medium"] {
         background-color: rgba(4, 63, 130, 1);
 
-        &:hover {
+        &.select, &:hover {
           background-color: rgba(6, 98, 201, 1);
           color: rgba(255,255,255,1);
+          border: 1px solid #fff;
         }
       }
 
       &[name="hard"] {
         background-color: rgba(179, 25, 25, 1);
 
-        &:hover {
+        &.select, &:hover {
           background-color: rgba(237, 36, 36, 1);
           color: rgba(255,255,255,1);
+          border: 1px solid #fff;
         }
       }
     }

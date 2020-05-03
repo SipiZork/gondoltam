@@ -139,27 +139,30 @@ body {
   background-color: #0e8204;
 }
 
-.wrapper .mode .mode-option[name="easy"]:hover {
+.wrapper .mode .mode-option[name="easy"].select, .wrapper .mode .mode-option[name="easy"]:hover {
   background-color: #14bf06;
   color: white;
+  border: 1px solid #fff;
 }
 
 .wrapper .mode .mode-option[name="medium"] {
   background-color: #043f82;
 }
 
-.wrapper .mode .mode-option[name="medium"]:hover {
+.wrapper .mode .mode-option[name="medium"].select, .wrapper .mode .mode-option[name="medium"]:hover {
   background-color: #0662c9;
   color: white;
+  border: 1px solid #fff;
 }
 
 .wrapper .mode .mode-option[name="hard"] {
   background-color: #b31919;
 }
 
-.wrapper .mode .mode-option[name="hard"]:hover {
+.wrapper .mode .mode-option[name="hard"].select, .wrapper .mode .mode-option[name="hard"]:hover {
   background-color: #ed2424;
   color: white;
+  border: 1px solid #fff;
 }
 
 .wrapper .game-div {
