@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Guess a number</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="guess-between hide"></div>
+    <div class="mode">
+      <div class="mode-option select" name="easy">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <p>Easy</p>
+      </div>
+      <div class="mode-option" name="medium">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <p>Medium</p>
+      </div>
+      <div class="mode-option" name="hard">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <p>Hard</p>
+      </div>
+    </div>
+    <div class="game-div">
+        <button type="button" class="start-button">Start Game</button>
+        <div class="between hide">X</div>
+        <div class="restart hide">
+          <button type="button" class="restart-button">Restart</button>
+        </div>
+    </div>
+    <div class="game-form">
+      <input type="text" name="guess" class="guess-number" autocomplete="off">
+      <button type="button" class="guess-button">Guess It</button>
+    </div>
+  </>
+  <script src="game.js"></script>
+</body>
+</html>
